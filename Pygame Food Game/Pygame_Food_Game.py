@@ -43,6 +43,8 @@ window_height = 720
 display.set_caption("Food Game")
 window = display.set_mode((window_width,window_height))
 
+# todo change directory paths to a relative path - since we want it to work for any given section
+
 world_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/world_map.jpg",10,10,600,400)
 food_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/Food_Ya.jpg",620,10,400,400)
 background_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/background_image.png",0,0,1080,720)

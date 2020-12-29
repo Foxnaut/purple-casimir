@@ -1,48 +1,82 @@
-/* Pardon my shitty CSS, I have actually not used it properly before. - Aiden */
-
-/* The body will all have the same font and the background should remain constant. */
+/* Body */
 body {
-  background-color: #c6ccb9;
+  color: #66cccc;
   font-family: 'Ubuntu', sans-serif;
+  background-color: #ffffff;
   width: 100%;
 
 }
 
+/* Top of the page */
 .title {
   font-style: bold;
-  margin: 30px;
-  position: relative;
+  margin: 20px;
+  position: relative;;
   text-align: center;
+}
+
+/* Navigation  */
+.nav_links {
+  text-align: center;
+  position: relative;
+  padding: 25px;
+  left: 50%;
+  transform: translate(-50%,0%);
+}
+
+/* specifically the button design */
+button {
+  background-color: black;
+}
+
+/* hover clause - styling of the hover state */
+button:hover {
+  background-color: #66cccc;
+}
+
+/* style up the links */
+a {
+  font-weight: 700;
+  color: #ffffff;
 }
 
 /* Each of these is a box that will go on top of one another. */
 .chal {
+  font-size: 25px;
   margin: 10px;
   text-align: center;
   left: 50%;
   transform:translate(-50%,0%);
   position: relative;
-  width: 45%;
+  width: 70%;
   border: 10px black;
-  outline-style: ridge;
+  outline-style:double;
   outline-width: 15px;
-  outline-color: blue;
+  outline-color: black;
   padding: 5px;
   font-style: bold;
 }
 
 .goal {
+  font-size: 25px;
   margin: 10px;
   text-align: center;
   left: 50%;
   transform:translate(-50%,0%);
   top: 40px;
   position: relative;
-  width: 45%;
+  width: 70%;
   border: 10px black;
-  outline-style: ridge;
+  outline-style: double;
   outline-width: 15px;
-  outline-color: blue;
+  outline-color: black;
   padding: 5px;
   font-style: bold;
+}
+
+footer {
+  position: relative;
+  font-size: 20px;
+  top: 150px;
+  text-align: center;
 }

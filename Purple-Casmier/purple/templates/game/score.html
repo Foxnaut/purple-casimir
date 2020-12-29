@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Leader Board</title>
 </head>
 <body>
-	<form method="POST">
-		<input type="text" name="Info">
-		<input type="SUbmit" value="Click here to submit data to the file"> 
-	</form>
+	<table style="text-align: center;border:2px solid black;">
+		<tr>
+			<th>INDEX</th>
+			<th>VALUE</th>
+		</tr>
+		{% for x in range((data['List'])|length) %}
+		<tr>
+			<td style="border:2px solid black">{{ x }}</td>
+			<td style="border:2px solid black">{{ data['List'][x] }}</td>
+		</tr>
+		{% endfor %}
+	</table>
 </body>
 </html>

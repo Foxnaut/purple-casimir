@@ -1,19 +1,21 @@
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
-import yaml, os
+import yaml, os, random
 
 bp = Blueprint('game', __name__, url_prefix='/game')
 
 @bp.route('/play', methods=('GET', 'POST'))
 def play():
-	file = open(os.path.join (os.getcwd(),"purple\\items.yaml"),'r')
-	data = yaml.safe_load(file)
-	file.close()
-	return (data)
+	if request.method == "POST":
+		session['score'] = random.randint(1,10)
+		
+		return redirect(url_for('game.submit'))
+	else:
+		return render_template('game/play.html',mode=0)
 
-@bp.route('/score', methods=('GET', 'POST'))
-def score():
+@bp.route('/submit', methods=('GET', 'POST'))
+def submit():
 	if request.method == "POST":
 		file = open(os.path.join (os.getcwd(),"purple\\items.yaml"),'r')
 		data = yaml.safe_load(file)
@@ -21,15 +23,25 @@ def score():
 
 		temp = data["List"]
 
-		temp.append(request.form["Info"])
+		temp.append(int(request.form["Info"]))
 
 		data["List"] = temp
-		
+			
 		file = open(os.path.join (os.getcwd(),"purple\\items.yaml"),'w')
 		yaml.dump(data,file)
 		file.close()
-		
-		return redirect(url_for('game.play'))
+
+		session.clear()
+
+		return redirect(url_for('game.score'))
+
 	else:
-		return render_template('game/score.html')
+		return render_template('game/play.html',mode=1)
+
+@bp.route('/score', methods=('GET', 'POST'))
+def score():
+	file = open(os.path.join (os.getcwd(),"purple\\items.yaml"),'r')
+	data = yaml.safe_load(file)
+	file.close()
+	return render_template('game/score.html',data=data)
 

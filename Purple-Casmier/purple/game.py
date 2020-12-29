@@ -3,7 +3,7 @@ from flask import (
 )
 import yaml, os, random
 
-bp = Blueprint('game', __name__, url_prefix='/game')
+bp = Blueprint('game', __name__, url_prefix='/')
 
 @bp.route('/play', methods=('GET', 'POST'))
 def play():
@@ -12,7 +12,7 @@ def play():
 		
 		return redirect(url_for('game.submit'))
 	else:
-		return render_template('game/play.html',mode=0)
+		return render_template('play.html',mode=0)
 
 @bp.route('/submit', methods=('GET', 'POST'))
 def submit():
@@ -36,12 +36,15 @@ def submit():
 		return redirect(url_for('game.score'))
 
 	else:
-		return render_template('game/play.html',mode=1)
+		return render_template('play.html',mode=1)
 
 @bp.route('/score', methods=('GET', 'POST'))
 def score():
 	file = open(os.path.join (os.getcwd(),"purple\\items.yaml"),'r')
 	data = yaml.safe_load(file)
 	file.close()
-	return render_template('game/score.html',data=data)
+	return render_template('score.html',data=data)
 
+@bp.route('/about', methods=('GET', 'POST'))
+def about():
+	return render_template('aboutus.html')

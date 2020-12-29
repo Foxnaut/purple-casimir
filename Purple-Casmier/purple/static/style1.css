@@ -1,0 +1,39 @@
+body{
+    background-image: url('https://static.vecteezy.com/system/resources/previews/000/533/573/non_2x/abstract-light-technology-lines-art-background-and-space-vector.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    text-align:center;
+    margin:0px;
+}
+#title{
+  padding:40px 3px 40px 6px; 
+  color: #000000; 
+  background-color: #f2f2f2; 
+  border: #000000 2px solid;
+  font-weight: bold;
+  font-style: italic;
+}
+#subtitle{
+  font-weight: bold;
+  font-style: italic;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.Text{
+  background-color: #f2f2f2;
+  border:1px solid black;
+}
+table{
+  margin:auto;
+  width:80%;
+  padding:0px;
+}
+.column{
+  padding:10px;
+}
+img{
+  width:100%;
+}

@@ -4,8 +4,48 @@
 
 
     
-<h2>Instructions</h2>
-<!-- This is where the Instructions should go. Will be filled in after Josh designs the game mechanics.-->
-    
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="favicon" type="image/ico" href="/icons/favicon.ico">
+    <meta name='author' content='aiden, aathii'>
+    <link rel='stylesheet' href='/css/highscorestyle.css'> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <title>Broccoli distro</title>
+  </head>
+  <body>
+    <h1>Broccoli distro</h1>
+    <p>Click the Button Below to start our game</p>
+
+    {% if mode == 0 %}
+    <form method="POST">
+        <input type="Submit" value="click here to get a score" enabled>
+    </form>
+
+    <form method="POST">
+        <fieldset disabled>
+            <input type="text">
+            <input type="submit" value="THIS BUTTON IS DISABLED">
+        </fieldset>
+    </form>
+    {% else %}
+    <form method="POST">
+        <input type="Submit" value="THIS BUTTON IS DISABLED" disabled>
+    </form>
+
+    <form method="POST">
+        <fieldset enabled>
+            <input type="text" name="Info" value="{{session['score']}}">
+            <input type="Submit" value="CLick to send your score to our database">
+        </fieldset>
+    </form>
+    {% endif %}
+  </body>
+</html>    
     
     

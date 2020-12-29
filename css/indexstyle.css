@@ -15,6 +15,27 @@ body {
   text-align: center;
 }
 
+.about_us {
+  margin: 10px;
+  text-align: center;
+  padding: 20px;
+}
+
+.game {
+  margin: 10px;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+}
+
+.highscore {
+  margin: 10px;
+  text-align:center;
+  position: relative;
+  padding: 20px;
+}
+
+
 /* Each of these is a box that will go on top of one another. */
 .chal {
   margin: 10px;
@@ -26,7 +47,7 @@ body {
   border: 10px black;
   outline-style: ridge;
   outline-width: 15px;
-  outline-color: blue;
+  outline-color: grey;
   padding: 5px;
   font-style: bold;
 }
@@ -42,7 +63,13 @@ body {
   border: 10px black;
   outline-style: ridge;
   outline-width: 15px;
-  outline-color: blue;
+  outline-color: grey;
   padding: 5px;
   font-style: bold;
+}
+
+footer {
+  position: relative;
+  top: 150px;
+  text-align: center;
 }

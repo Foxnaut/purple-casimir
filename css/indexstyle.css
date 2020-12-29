@@ -1,16 +1,48 @@
 /* Pardon my shitty CSS, I have actually not used it properly before. - Aiden */
 
+/* The body will all have the same font and the background should remain constant. */
 body {
-  background-color: aliceblue;
+  background-color: #c6ccb9;
   font-family: 'Ubuntu', sans-serif;
-
+  width: 100%;
 
 }
 
-.chal {
+.title {
+  font-style: bold;
+  margin: 30px;
+  position: relative;
+  text-align: center;
+}
 
+/* Each of these is a box that will go on top of one another. */
+.chal {
+  margin: 10px;
+  text-align: center;
+  left: 50%;
+  transform:translate(-50%,0%);
+  position: relative;
+  width: 45%;
+  border: 10px black;
+  outline-style: ridge;
+  outline-width: 15px;
+  outline-color: blue;
+  padding: 5px;
+  font-style: bold;
 }
 
 .goal {
-  
+  margin: 10px;
+  text-align: center;
+  left: 50%;
+  transform:translate(-50%,0%);
+  top: 40px;
+  position: relative;
+  width: 45%;
+  border: 10px black;
+  outline-style: ridge;
+  outline-width: 15px;
+  outline-color: blue;
+  padding: 5px;
+  font-style: bold;
 }

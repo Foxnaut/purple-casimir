@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Broccoli distro</title>
+</head>
+<body>
+	<h1>Broccoli distro</h1>
+	<p>Click the Button Below to start our game</p>
+
+	{% if mode == 0 %}
+	<form method="POST">
+		<input type="Submit" value="click here to get a score" enabled>
+	</form>
+
+	<form method="POST">
+		<fieldset disabled>
+			<input type="text">
+			<input type="submit" value="THIS BUTTON IS DISABLED">
+		</fieldset>
+	</form>
+	{% else %}
+	<form method="POST">
+		<input type="Submit" value="THIS BUTTON IS DISABLED" disabled>
+	</form>
+
+	<form method="POST">
+		<fieldset enabled>
+			<input type="text" name="Info" value="{{session['score']}}">
+			<input type="Submit" value="CLick to send your score to our database">
+		</fieldset>
+	</form>
+	{% endif %}
+</body>
+</html>

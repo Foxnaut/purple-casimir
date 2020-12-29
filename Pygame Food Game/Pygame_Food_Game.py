@@ -204,6 +204,15 @@ dead_list = []
 light_blue_square1 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",25,435,570,265)
 light_blue_square2 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",635,435,420,265)
 
+# Game Over Stuff
+
+final_score1 = ""
+
+gameover_text = Phrase(255, 0, 0, "Arial","GAMEOVER", 300, 200, 100)
+final_score = Phrase(0, 0, 0, "Arial","Score: " + final_score1, 350, 400, 100)
+light_blue_square3 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",300,200,480,110)
+light_blue_square4 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",350,400,280 + (40 * len(str(final_score1))),110)
+
 #Brocoli 2
 
 broccoli_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/broccoli_2.jpg",0,0,1080,720)
@@ -218,11 +227,40 @@ random_buttom_list = []
 cost_list = []
 urgency_list = []
 
-# Main Game Loop
+# ----------------------------------------------------------------------------------------------------------
+
+# Starting Screen
+
+kill_switch = False
+main_game = True
+while main_game == True:
+
+    for e in event.get():
+
+        # Quiting Pygame
+
+        if e.type == QUIT:
+            main_game = "kill switch"
+            kill_switch = "kill switch"
+
+        if e.type == KEYDOWN:
+            if e.key == K_SPACE:
+                main_game = False
+
+    broccoli_image.create_image()
+
+    display.update()
+
 
 # ----------------------------------------------------------------------------------------------------------
 
-main_game = True
+# Main Game Loop
+if kill_switch == False:
+    main_game = True
+else:
+    main_game = "kill switch"
+
+
 while main_game == True:
 
     # Everything that need to be updated every game loop
@@ -392,11 +430,9 @@ while main_game == True:
 
     display.update()
 
-gameover_text = Phrase(255, 0, 0, "Arial","GAMEOVER", 300, 200, 100)
-final_score = Phrase(0, 0, 0, "Arial","Score: " + final_score1, 350, 400, 100)
-light_blue_square3 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",300,200,480,110)
-light_blue_square4 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",350,400,280 + (40 * len(str(final_score1))),110)
+# ----------------------------------------------------------------------------------------------------------
 
+# Ending Screen
 
 if main_game == "dead":
     main_game = True

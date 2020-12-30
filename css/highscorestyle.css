@@ -2,8 +2,29 @@
 body {
     background-color: aliceblue;
     font-family: 'Ubuntu', sans-serif;
-  
-  
+    text-align: center;
   }
 
   
+  /* specifically the button design */
+button {
+  background-color: rgb(173, 173, 173);
+  padding-top: 0px;
+  padding-bottom: 30px;
+  width: 23.3%;
+  cursor:crosshair;
+  height: 30px;
+}
+
+/* hover clause - styling of the hover state */
+button:hover {
+  background-color: #66cccc;
+}
+
+/* style up the links */
+a {
+  font-weight: 700;
+  color: #000000;
+  cursor: crosshair;
+  font-size: 25px;
+}

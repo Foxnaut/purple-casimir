@@ -67,8 +67,8 @@ def information_page(page_num):
             in_game_des = Phrase(0, 0, 0, "Arial", "Decreases the amount of food needed to feed people by 10%", 50, 200, 30)
             in_game_picture = Image("food-waste.jpg",50,250,980,420)
         if page_num == 1:
-            in_game_des = Phrase(0, 0, 0, "Arial", "Multiplies gross food income by 150%", 50, 200, 30)
-            in_game_picture = Image("Irragation.jpg", 50, 250, 980, 420)
+            in_game_des = Phrase(0, 0, 0, "Arial", "Increases the income multiplier by 0.5", 50, 200, 30)
+            in_game_picture = Image("C:/Users/joshu/Downloads/Pygame Food Game/Irragation.jpg", 50, 250, 980, 420)
         if page_num == 2:
             in_game_des = Phrase(0, 0, 0, "Arial", "Increases food income from clicks by 1", 50, 200, 30)
             in_game_picture = Image("soil.jpg", 50, 250, 980, 420)
@@ -97,11 +97,15 @@ def information_page(page_num):
     print("out")
     return
 
+
+# ----------------------------------------------------------------------------------------------------------
+
+
 # Game Inital Step Up
 
 window_width = 1080
 window_height = 720
-display.set_caption("Food Game")
+display.set_caption("Broccoli distro")
 window = display.set_mode((window_width,window_height))
 
 world_image = Image("world_map.jpg",20,20,600,400)
@@ -142,13 +146,16 @@ button_image_list = []
 for i in range(4):
     button_image_list.append(Button(50,505 + (i * 50),30,30))
 
+rand_time = 0
+
 # Green Power Up Box
 
 green_box = [[],[],[],[]]
+black_box = [[],[],[],[]]
 for i in range(4):
     for j in range(5):
-        green_box[i].append(Image("Green_Square.jpg",350 + (j * 40),505 + (i * 50),30,30))
-
+        green_box[i].append(Image("C:/Users/joshu/Downloads/Pygame Food Game/Green_Square.jpg",350 + (j * 40),505 + (i * 50),30,30))
+        black_box[i].append(Image("C:/Users/joshu/Downloads/Pygame Food Game/box_outline.png",350 + (j * 40),505 + (i * 50),30,30))
 # Imformation Icon
 
 info_icon_list = []
@@ -169,10 +176,48 @@ food_counter_text = Phrase(0,0,0,"Arial","Food Counter:",650,450,50)
 
 # + 1
 
-plus_one_text = Phrase(0,0,0,"Arial","+1",950,100,100)
+plus_one_text = Phrase(0,0,0,"Arial","+" + str(1 + (1 * num_power_ups[2])),950,100,100)
 plus_one_time = -1
 
+# Hearts
+
+heart_list = []
+for i in range(3):
+    heart_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/Heart.png",780 + (i * 70),570,50,50))
+
+gray_heart_list = []
+for i in range(3):
+    gray_heart_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/Heart_Outline.png", 790 + (i * 70), 580, 35, 35))
+
+number_lives = 3
+
+lives = Phrase(0,0,0,"Arial","Lives:",650,570,50)
+
+#Score
+
+score_text = Phrase(0,0,0,"Arial","Score: " + str(int(time.get_ticks() / 1000)),650,660,50)
+dead_list = []
+
+# Light Blue Squares
+
+light_blue_square1 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",25,435,570,265)
+light_blue_square2 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",635,435,420,265)
+
+# Game Over Stuff
+
+final_score1 = ""
+
+gameover_text = Phrase(255, 0, 0, "Arial","GAMEOVER", 300, 200, 100)
+final_score = Phrase(0, 0, 0, "Arial","Score: " + final_score1, 350, 400, 100)
+light_blue_square3 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",300,200,480,110)
+light_blue_square4 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",350,400,280 + (40 * len(str(final_score1))),110)
+
+#Brocoli 2
+
+broccoli_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/broccoli_2.jpg",0,0,1080,720)
+
 # List Icon Storage
+
 
 time1 = 10
 random_num_list = []
@@ -181,17 +226,61 @@ random_buttom_list = []
 cost_list = []
 urgency_list = []
 
-# Main Game Loop
+# ----------------------------------------------------------------------------------------------------------
 
-while True:
+# Starting Screen
+
+kill_switch = False
+main_game = True
+while main_game == True:
+
+    for e in event.get():
+
+        # Quiting Pygame
+
+        if e.type == QUIT:
+            main_game = "kill switch"
+            kill_switch = "kill switch"
+
+        if e.type == KEYDOWN:
+            if e.key == K_SPACE:
+                main_game = False
+
+    broccoli_image.create_image()
+
+    display.update()
+
+
+# ----------------------------------------------------------------------------------------------------------
+
+# Main Game Loop
+if kill_switch == False:
+    main_game = True
+else:
+    main_game = "kill switch"
+
+
+while main_game == True:
 
     # Everything that need to be updated every game loop
+
 
     background_image.create_image()
     world_image.create_image()
     food_image.create_image()
-    food_counter_text = Phrase(0, 0, 0, "Arial", "Food Amount: " + str(food_counter), 650, 450, 50)
+    light_blue_square1.create_image()
+    light_blue_square2.create_image()
+
+    score_text.draw_text()
+    final_score1 = str(int(time.get_ticks() / 1000))
+    score_text = Phrase(0, 0, 0, "Arial", "Score: " + str(int(time.get_ticks() / 1000)), 650, 640, 50)
+
+    food_counter_text = Phrase(0, 0, 0, "Arial", "Food Amount: " + str(int(food_counter)), 650, 430, 50)
     food_counter_text.draw_text()
+    plus_one_text = Phrase(0, 0, 0, "Arial", "+" + str(1 + (1 * num_power_ups[2])), 950, 100, 100)
+    income_multiplier = 1 + (0.5 * num_power_ups[1])
+    income_text = Phrase(0, 0, 0, "Arial", "Income Multiplier: " + str(income_multiplier), 650, 500, 50)
+    lives.draw_text()
 
     # Making a new icon every ten seconds
 
@@ -200,9 +289,12 @@ while True:
         random_num = [random.randint(20, 580), random.randint(20, 380)]
         random_num_list.append(random_num)
         random_buttom_list.append(Button(random_num[0], random_num[1], 40, 40))
-        random_picture_list.append(Image("flat_location_logo.png", random_num[0], random_num[1], 40, 40))
-        cost_list.append(int((total_food_counter + 1) / random.randint(5, 10) + random.randint(1, 5)))
+        random_picture_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/flat_location_logo.png", random_num[0], random_num[1], 40, 40))
+        cost_list.append(int((total_food_counter + 1) / random.randint(5, 10) + random.randint(1, 5)) / (1 + (0.1 * num_power_ups[0])))
         urgency_list.append([time.get_ticks() / 1000,"None"])
+
+    for i in range(len(cost_list)):
+        cost_list[i] = int(cost_list[i])
 
     # Printing the icons
 
@@ -212,7 +304,10 @@ while True:
     # Game Urgency List Update
 
     for i in range(len(urgency_list)):
-        if urgency_list[i][0] + 50 <= time.get_ticks() / 1000:
+        if urgency_list[i][0] + 50 <= time.get_ticks() / 1000 and urgency_list[i][1] == "High":
+            number_lives -= 1
+            urgency_list[i][1] = "Dead"
+        elif urgency_list[i][0] + 50 <= time.get_ticks() / 1000:
             urgency_list[i][1] = "Dead"
         elif urgency_list[i][0] + 30 <= time.get_ticks() / 1000:
             urgency_list[i][1] = "High"
@@ -228,22 +323,29 @@ while True:
 
     for i in range(len(random_buttom_list)):
         if random_buttom_list[i].hovering() == "hovering":
-            black_box = Image("blackbox.jpeg", random_num_list[i][0] + 50, random_num_list[i][1], 110 + len(str(cost_list[i])) * 6, 40)
+            black_box1 = Image("C:/Users/joshu/Downloads/Pygame Food Game/blackbox.jpeg", random_num_list[i][0] + 50, random_num_list[i][1], 110 + len(str(cost_list[i])) * 6, 40)
             cost_text = Phrase(255, 255, 255, "Arial", "Food Amount: " + str(cost_list[i]), random_num_list[i][0] + 55, random_num_list[i][1] + 2.5, 15)
             need_text = Phrase(255, 255, 255, "Arial", "Urgency: " + str(urgency_list[i][1]), random_num_list[i][0] + 55, random_num_list[i][1] + 20, 15)
 
-            black_box.create_image()
+            black_box1.create_image()
             cost_text.draw_text()
             need_text.draw_text()
 
     for e in event.get():
+
+        # Quiting Pygame
+
+        if e.type == QUIT:
+            print("quit")
+            main_game = False
+
         if e.type == MOUSEBUTTONDOWN:
 
             # Clicking on the icon
 
             del_index = -1
             for i in range(len(random_buttom_list)):
-                if random_buttom_list[i].button_press(e) == True and food_counter - cost_list[i] >= 0:
+                if random_buttom_list[i].button_press(e) == True and food_counter - cost_list[i] >= 0 and urgency_list[i][1] != "Dead":
                     del_index = i
 
             # Deleting the icon
@@ -259,12 +361,13 @@ while True:
             # Main Clicker
 
             if clicker_button.button_press(e) == True:
-                food_counter += 1
-                total_food_counter += 1
+                food_counter += (1 + (1 * num_power_ups[2])) * income_multiplier
+                total_food_counter += (1 + (1 * num_power_ups[2])) * income_multiplier
                 plus_one_time = time.get_ticks()
 
             for i in range(len(button_image_list)):
-                if button_image_list[i].button_press(e) == True and num_power_ups[i] <= 4:
+                if button_image_list[i].button_press(e) == True and num_power_ups[i] <= 4 and food_counter >= (num_power_ups[i] + 1) * 100:
+                    food_counter -= (num_power_ups[i] + 1) * 100
                     num_power_ups[i] += 1
 
             if info_icon_button_list[0].button_press(e) == True:
@@ -286,6 +389,7 @@ while True:
     irrigation_system.draw_text()
     fertilizer.draw_text()
     industrialization.draw_text()
+    income_text.draw_text()
 
     # Plus Power Up Image
 
@@ -293,6 +397,10 @@ while True:
         plus_button_image_list[i].create_image()
 
     # Power Up Green Squares
+
+    for i in range(4):
+        for j in range(5):
+            black_box[i][j].create_image()
 
     for i in range(4):
         for j in range(num_power_ups[i]):
@@ -303,4 +411,43 @@ while True:
     for i in range(len(info_icon_list)):
         info_icon_list[i].create_image()
 
+    if rand_time + 1000 <= time.get_ticks():
+        rand_time = time.get_ticks()
+        food_counter += (1 * num_power_ups[3]) * income_multiplier
+        total_food_counter += (1 * num_power_ups[3]) * income_multiplier
+
+    for i in range(len(gray_heart_list)):
+        gray_heart_list[i].create_image()
+
+    for i in range(number_lives):
+        heart_list[i].create_image()
+
+    # Checking Lives Count
+
+    if number_lives <= 0:
+        main_game = "dead"
+
     display.update()
+# ----------------------------------------------------------------------------------------------------------
+
+# Ending Screen
+
+if main_game == "dead":
+    main_game = True
+    while main_game == True:
+
+        for e in event.get():
+
+            # Quiting Pygame
+
+            if e.type == QUIT:
+                print("quit")
+                main_game = False
+
+        broccoli_image.create_image()
+        light_blue_square3.create_image()
+        light_blue_square4.create_image()
+        gameover_text.draw_text()
+        final_score.draw_text()
+
+        display.update()

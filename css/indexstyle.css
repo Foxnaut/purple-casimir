@@ -1,15 +1,16 @@
 /* Body */
 body {
-  color: #66cccc;
+  color:#800000;
   font-family: 'Ubuntu', sans-serif;
   background-color: #ffffff;
   width: 100%;
-
+  cursor:crosshair;
 }
 
 /* Top of the page */
 .title {
   font-style: bold;
+  font-size: 45px;
   margin: 20px;
   position: relative;;
   text-align: center;
@@ -26,7 +27,12 @@ body {
 
 /* specifically the button design */
 button {
-  background-color: black;
+  background-color: rgb(173, 173, 173);
+  padding-top: 0px;
+  padding-bottom: 30px;
+  width: 23.3%;
+  cursor:crosshair;
+  height: 30px;
 }
 
 /* hover clause - styling of the hover state */
@@ -37,7 +43,9 @@ button:hover {
 /* style up the links */
 a {
   font-weight: 700;
-  color: #ffffff;
+  color: #000000;
+  cursor: crosshair;
+  font-size: 25px;
 }
 
 /* Each of these is a box that will go on top of one another. */
@@ -63,6 +71,23 @@ a {
   text-align: center;
   left: 50%;
   transform:translate(-50%,0%);
+  top: 40px;
+  position: relative;
+  width: 70%;
+  border: 10px black;
+  outline-style: double;
+  outline-width: 15px;
+  outline-color: black;
+  padding: 5px;
+  font-style: bold;
+}
+
+.links {
+  font-size: 25px;
+  margin: 10px;
+  text-align: left;
+  left: 50%;
+  transform:translate(-50%,40px);
   top: 40px;
   position: relative;
   width: 70%;

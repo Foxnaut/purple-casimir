@@ -3,12 +3,14 @@ from flask import (
 )
 import yaml, os, random
 
+from purple.PygameFoodGame.Pygame_Food_Game import PlayGame
+
 bp = Blueprint('game', __name__, url_prefix='/')
 
 @bp.route('/play', methods=('GET', 'POST'))
 def play():
 	if request.method == "POST":
-		session['score'] = random.randint(1,10)
+		session['score'] = PlayGame()
 		
 		return redirect(url_for('game.submit'))
 	else:

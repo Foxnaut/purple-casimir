@@ -15,7 +15,16 @@
 	</form>
 
 	<form method="POST" class="send">
-		<input type="text" name="Info" class="score" disabled>
+		<table>
+			<tr>
+				<td>SCORE</td>
+				<td><input type="text" name="SCORE" class="info" disabled></td>
+			</tr>
+			<tr>
+				<td>USERNAME</td>
+				<td><input type="text" name="USERNAME" class="info" disabled></td>
+			</tr>
+		</table>
 		<input type="submit" class="BUTTONSEND" value="SUBMIT" disabled>
 	</form>
 	{% else %}
@@ -24,7 +33,16 @@
 	</form>
 
 	<form method="POST" class="send">
-		<input type="text" name="Info" class="score" value="{{session['score']}}">
+		<table>
+			<tr>
+				<td>SCORE</td>
+				<td><input type="text" name="SCORE" class="info" value="{{session['score']}}"></td>
+			</tr>
+			<tr>
+				<td>USERNAME</td>
+				<td><input type="text" name="USERNAME" class="info"></td>
+			</tr>
+		</table>
 		<input type="Submit" class="BUTTONSEND" value="SUBMIT">
 	</form>
 	{% endif %}

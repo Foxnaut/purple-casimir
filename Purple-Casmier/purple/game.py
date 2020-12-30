@@ -23,9 +23,12 @@ def submit():
 		data = yaml.safe_load(file)
 		file.close()
 
-		temp = data["List"]
+		if data["List"] == None:
+			temp = []
+		else:
+			temp = data["List"]
 
-		temp.append(int(request.form["Info"]))
+		temp.append([ request.form["USERNAME"], int(request.form["SCORE"])])
 
 		data["List"] = temp
 			

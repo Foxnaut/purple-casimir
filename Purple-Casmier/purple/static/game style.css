@@ -49,10 +49,10 @@ body{
 .BUTTONSEND:disabled{
 	background-color:#ddffff;
 }
-.score{
+.info{
 	text-align:center;
-	height:30%;
-	width:75%;
+	height:100%;
+	width:100%;
 }
 .send{
 	height:40%;
@@ -63,4 +63,7 @@ body{
 	align-items: center;
   	justify-content: space-around;
   	flex-direction:column;
+}
+table{
+	width:80%;
 }

@@ -6,13 +6,14 @@
 <body>
 	<table style="text-align: center;border:2px solid black;">
 		<tr>
-			<th>INDEX</th>
-			<th>VALUE</th>
+			<th>USERNAME</th>
+			<th>SCORE</th>
 		</tr>
-		{% for x in range((data['List'])|length) %}
+		{% for x in data['List']) %}
 		<tr>
-			<td style="border:2px solid black">{{ x }}</td>
-			<td style="border:2px solid black">{{ data['List'][x] }}</td>
+			{% for y in x %}
+			<td style="border:2px solid black">{{ y }}</td>
+			{% endfor %}
 		</tr>
 		{% endfor %}
 	</table>

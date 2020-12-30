@@ -65,16 +65,16 @@ def information_page(page_num):
 
         if page_num == 0:
             in_game_des = Phrase(0, 0, 0, "Arial", "Decreases the amount of food needed to feed people by 10%", 50, 200, 30)
-            in_game_picture = Image("C:/Users/joshu/Downloads/Pygame Food Game/food-waste.jpg",50,250,980,420)
+            in_game_picture = Image("food-waste.jpg",50,250,980,420)
         if page_num == 1:
             in_game_des = Phrase(0, 0, 0, "Arial", "Multiplies gross food income by 150%", 50, 200, 30)
-            in_game_picture = Image("C:/Users/joshu/Downloads/Pygame Food Game/Irragation.jpg", 50, 250, 980, 420)
+            in_game_picture = Image("Irragation.jpg", 50, 250, 980, 420)
         if page_num == 2:
             in_game_des = Phrase(0, 0, 0, "Arial", "Increases food income from clicks by 1", 50, 200, 30)
-            in_game_picture = Image("C:/Users/joshu/Downloads/Pygame Food Game/soil.jpg", 50, 250, 980, 420)
+            in_game_picture = Image("soil.jpg", 50, 250, 980, 420)
         if page_num == 3:
             in_game_des = Phrase(0, 0, 0, "Arial", "Passive income giving food every second", 50, 200, 30)
-            in_game_picture = Image("C:/Users/joshu/Downloads/Pygame Food Game/Trackter.jpg", 50, 250, 980, 420)
+            in_game_picture = Image("Trackter.jpg", 50, 250, 980, 420)
 
         in_game_effect = Phrase(0,0,0,"Arial",list_power_ups_names[page_num] + "'s Power Up Bonus",50,50,50)
 
@@ -104,13 +104,13 @@ window_height = 720
 display.set_caption("Food Game")
 window = display.set_mode((window_width,window_height))
 
-world_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/world_map.jpg",20,20,600,400)
-food_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/broccoli.png",620,10,400,400)
-background_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/background_image.png",0,0,1080,720)
+world_image = Image("world_map.jpg",20,20,600,400)
+food_image = Image("broccoli.png",620,10,400,400)
+background_image = Image("background_image.png",0,0,1080,720)
 
 # X Button
 
-X_Button = Image("C:/Users/joshu/Downloads/Pygame Food Game/X_Button.png",980,50,50,50)
+X_Button = Image("X_Button.png",980,50,50,50)
 X_Button_button = Button(980,50,50,50)
 
 list_power_ups_names = [
@@ -134,7 +134,7 @@ num_power_ups = [0,0,0,0]
 
 plus_button_image_list = []
 for i in range(4):
-    plus_button_image_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/plus_image.png",50,505 + (i * 50),30,30))
+    plus_button_image_list.append(Image("plus_image.png",50,505 + (i * 50),30,30))
 
 # Power Up Button
 
@@ -147,13 +147,13 @@ for i in range(4):
 green_box = [[],[],[],[]]
 for i in range(4):
     for j in range(5):
-        green_box[i].append(Image("C:/Users/joshu/Downloads/Pygame Food Game/Green_Square.jpg",350 + (j * 40),505 + (i * 50),30,30))
+        green_box[i].append(Image("Green_Square.jpg",350 + (j * 40),505 + (i * 50),30,30))
 
 # Imformation Icon
 
 info_icon_list = []
 for i in range(4):
-    info_icon_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/Information_icon.png",550,502.5 + (i * 50),30,30))
+    info_icon_list.append(Image("Information_icon.png",550,502.5 + (i * 50),30,30))
 
 info_icon_button_list = []
 for i in range(4):
@@ -200,7 +200,7 @@ while True:
         random_num = [random.randint(20, 580), random.randint(20, 380)]
         random_num_list.append(random_num)
         random_buttom_list.append(Button(random_num[0], random_num[1], 40, 40))
-        random_picture_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/flat_location_logo.png", random_num[0], random_num[1], 40, 40))
+        random_picture_list.append(Image("flat_location_logo.png", random_num[0], random_num[1], 40, 40))
         cost_list.append(int((total_food_counter + 1) / random.randint(5, 10) + random.randint(1, 5)))
         urgency_list.append([time.get_ticks() / 1000,"None"])
 
@@ -228,7 +228,7 @@ while True:
 
     for i in range(len(random_buttom_list)):
         if random_buttom_list[i].hovering() == "hovering":
-            black_box = Image("C:/Users/joshu/Downloads/Pygame Food Game/blackbox.jpeg", random_num_list[i][0] + 50, random_num_list[i][1], 110 + len(str(cost_list[i])) * 6, 40)
+            black_box = Image("blackbox.jpeg", random_num_list[i][0] + 50, random_num_list[i][1], 110 + len(str(cost_list[i])) * 6, 40)
             cost_text = Phrase(255, 255, 255, "Arial", "Food Amount: " + str(cost_list[i]), random_num_list[i][0] + 55, random_num_list[i][1] + 2.5, 15)
             need_text = Phrase(255, 255, 255, "Arial", "Urgency: " + str(urgency_list[i][1]), random_num_list[i][0] + 55, random_num_list[i][1] + 20, 15)
 
@@ -304,5 +304,3 @@ while True:
         info_icon_list[i].create_image()
 
     display.update()
-
-

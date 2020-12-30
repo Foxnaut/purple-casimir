@@ -2,32 +2,30 @@
 <html>
 <head>
 	<title>Broccoli distro</title>
+	<link rel="stylesheet" href="{{url_for('static', filename='game style.css')}}">
 </head>
 <body>
-	<h1>Broccoli distro</h1>
-	<p>Click the Button Below to start our game</p>
+	<h1 id="Title">Broccoli distro</h1>
+	<p id="notice1">Click the Button Below to start our game</p>
+	<p id="notice2">Note, this will open a seperate window on your computer</p>
 
 	{% if mode == 0 %}
-	<form method="POST">
-		<input type="Submit" value="click here to get a score" enabled>
+	<form method="POST" class="play">
+		<input class="BUTTONPLAY" type="Submit" value="PLAY" enabled>
 	</form>
 
-	<form method="POST">
-		<fieldset disabled>
-			<input type="text">
-			<input type="submit" value="THIS BUTTON IS DISABLED">
-		</fieldset>
+	<form method="POST" class="send">
+		<input type="text" name="Info" class="score" disabled>
+		<input type="submit" class="BUTTONSEND" value="SUBMIT" disabled>
 	</form>
 	{% else %}
-	<form method="POST">
-		<input type="Submit" value="THIS BUTTON IS DISABLED" disabled>
+	<form method="POST" class="play">
+		<input class="BUTTONPLAY" type="Submit" value="PLAY" disabled>
 	</form>
 
-	<form method="POST">
-		<fieldset enabled>
-			<input type="text" name="Info" value="{{session['score']}}">
-			<input type="Submit" value="CLick to send your score to our database">
-		</fieldset>
+	<form method="POST" class="send">
+		<input type="text" name="Info" class="score" value="{{session['score']}}">
+		<input type="Submit" class="BUTTONSEND" value="SUBMIT">
 	</form>
 	{% endif %}
 </body>

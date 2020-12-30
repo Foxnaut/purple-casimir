@@ -5,10 +5,10 @@ Made for: Kurius Hacks: Christmas Edition
 Made from: 4:30 PM EST on 28/12/2020 to 4:00 PM EST on 30/12/2020
 
 Our githubs:
-Aiden - https://github.com/Foxnaut/  
-Josh - https://github.com/iWolf22
-Kavin - https://github.com/KavinSatheeskumar/ 
-Aathii - https://github.com/Aathii 
+- Aiden - https://github.com/Foxnaut/  
+- Josh - https://github.com/iWolf22
+- Kavin - https://github.com/KavinSatheeskumar/ 
+- Aathii - https://github.com/Aathii 
 
 Project components:
 - HTML and CSS frontend (primarily written by Aiden and Aathii)

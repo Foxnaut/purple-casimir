@@ -37,7 +37,9 @@ Step three: Activate the virtual environment
 
 Step four: Install the nesscicary dependencies
 >pip install flask
+
 >pip install pygame
+
 >pip install pyyaml
 
 Step five: set environment variables

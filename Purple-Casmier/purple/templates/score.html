@@ -2,20 +2,46 @@
 <html>
 <head>
 	<title>Leader Board</title>
+	<style>
+		table{
+			border-collapse: collapse;
+  			width: 100%;
+		}
+
+		th{
+    		background: #DDD;
+		}
+
+		td,th{
+  			padding: 10px;
+  			text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<table style="text-align: center;border:2px solid black;">
-		<tr>
-			<th>USERNAME</th>
-			<th>SCORE</th>
-		</tr>
-		{% for x in data['List']) %}
-		<tr>
-			{% for y in x %}
-			<td style="border:2px solid black">{{ y }}</td>
-			{% endfor %}
-		</tr>
-		{% endfor %}
+		<thead>
+			<tr class="red">
+				<th>USERNAME</th>
+				<th>SCORE</th>
+				<th>DATE</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if data['List'] == none %}
+				<tr>
+					<td colspan="3">There is currently no one on the leader board</td>
+				</tr>
+			{% else %}
+				{% for x in data['List'] %}
+				<tr>
+					{% for y in x %}
+					<td style="border:2px solid black">{{ y }}</td>
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			{% endif %}
+		</tbody>
 	</table>
 </body>
 </html>

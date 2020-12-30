@@ -5,6 +5,11 @@ import yaml, os, random
 
 from purple.PygameFoodGame.Pygame_Food_Game import PlayGame
 
+from time import localtime
+
+def retrieve_time():
+    return f"{localtime()[0]}-{localtime()[1]}-{localtime()[2]}"
+
 bp = Blueprint('game', __name__, url_prefix='/')
 
 @bp.route('/play', methods=('GET', 'POST'))
@@ -28,7 +33,7 @@ def submit():
 		else:
 			temp = data["List"]
 
-		temp.append([ request.form["USERNAME"], int(request.form["SCORE"])])
+		temp.append([ request.form["USERNAME"], int(request.form["SCORE"]), retrieve_time()])
 
 		data["List"] = temp
 			

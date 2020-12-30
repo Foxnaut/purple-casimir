@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="favicon" type="image/ico" href="/icons/favicon.ico">
     <meta name='author' content='aiden, aathii'>
     <link rel='stylesheet' href="{{url_for('static', filename='index style.css')}}">
@@ -16,8 +16,8 @@
 
     <div class = 'nav_links'>
       <button type='button'><a href='{{url_for("game.about")}}'>About us!</a></button> 
-      <button type='button'> <a href="{{url_for('game.play')}}"> Our game!</a></button>
-      <button type='button'> <a href="{{url_for('game.score')}}"> Highscores!</a></span>
+      <button type='button'> <a href='{{url_for("game.play")}}'> Our game!</a></button>
+      <button type='button'> <a href='{{url_for("game.score")}}'> Highscores!</a></span>
       </button>
     </div>
 
@@ -39,11 +39,24 @@
         </i>
       </p>
       <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae hic, ea quidem adipisci illum numquam dolores illo, corrupti magnam, 
-      nostrum eveniet dolorum minus earum esse non. Delectus nihil itaque perferendis?         
+      Hi there!
+      <br>
+      Welcome to our site. We hope to inform you about food insecurity internationally and provide a good way to get more detailed information. Our game can be accessed by the link in the centre of the page at the top. You can improve your knowledge about what increases food security and get better high-scores along the way!
       </p>
   </div>
+  <div class = 'links'> <h2> <center><u>Links to data and food education resources.</u> </center></h2>
+    <ul style='list-style-type: square;'>
+        <li><a href="https://www.canada.ca/en/environment-climate-change/services/managing-reducing-waste/food-loss-waste.html">Food loss and waste | Government of Canada</a> - This resource can point you in the government's basic guidelines for why we waste so much food and how we can decrease that amount in the future. 
+        </li>
+        <li><a href="http://www.cec.org/flwy/">Food Matters Action Kits</a> are informational modules provided by the Commission for Environmental Cooperation available in English, French, and Spanish that inspires children to care about food ethics and understand some of the common misunderstandings that even adults have about their food. It includes meal planning, celebrating so-called 'ugly' produce, and studying what we throw out!
+        </li> 
+        <li><a href="http://www.fao.org/state-of-food-security-nutrition/2-1-1/en/">The FAO's (Food and Agriculture Organization of the United Nations) state of food security map</a> is a brilliant interative globe that details the prevalence of undernourishment by continent and by country. If you want more details, their complete datasets are available as well.
+        </li>
+        <li><a href="https://fdc.nal.usda.gov/">The USDA Food Database</a> is a good way to learn about basic nutrition. It has all the data you could ever need about most commercially-offered foods on the planet. It can be used as a supplement to a meal plan or diet.
 
+        </li>
+    </ul>
+  </div>
   </body>
   <footer>
     <p>

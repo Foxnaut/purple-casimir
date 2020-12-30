@@ -65,5 +65,9 @@ body{
   	flex-direction:column;
 }
 table{
-	width:80%;
+	width:50%;
+}
+.small{
+	width:10%;
+	border:1px solid grey;
 }

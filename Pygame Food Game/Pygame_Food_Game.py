@@ -63,6 +63,8 @@ def information_page(page_num):
 
                     end = True
 
+        background_image.create_image()
+
         if page_num == 0:
             in_game_des = Phrase(0, 0, 0, "Arial", "Decreases the amount of food needed to feed people by 10%", 50, 200, 30)
             in_game_picture = Image("food-waste.jpg",50,250,980,420)
@@ -76,27 +78,51 @@ def information_page(page_num):
             in_game_des = Phrase(0, 0, 0, "Arial", "Passive income giving food every second", 50, 200, 30)
             in_game_picture = Image("Trackter.jpg", 50, 250, 980, 420)
 
-        in_game_effect = Phrase(0,0,0,"Arial",list_power_ups_names[page_num] + "'s Power Up Bonus",50,50,50)
+        if page_num <= 3:
+            in_game_effect = Phrase(0,0,0,"Arial",list_power_ups_names[page_num] + "'s Power Up Bonus",50,50,50)
 
-        if num_power_ups[page_num] <= 4:
-            power_up_cost = Phrase(0,0,0,"Arial","Power Up Cost: " + str(num_power_ups[page_num] * 300 + 300),50,150,30)
+            if num_power_ups[page_num] <= 4:
+                power_up_cost = Phrase(0,0,0,"Arial","Power Up Cost: " + str(num_power_ups[page_num] * 300 + 300),50,150,30)
+                power_up_cost.draw_text()
+            else:
+                power_up_cost = Phrase(0, 0, 0, "Arial", "Power Up Cost: Maximum Amount Acquired", 50, 150, 30)
+                power_up_cost.draw_text()
         else:
-            power_up_cost = Phrase(0, 0, 0, "Arial", "Power Up Cost: Maximum Amount Acquired", 50, 150, 30)
+            if page_num == 4:
+                in_game_effect = Phrase(0, 0, 0, "Arial", "Normal Situation", 50, 50, 50)
+                in_game_des = Phrase(0, 0, 0, "Arial", "A regular day as a farming broccoli!", 50, 150, 30)
+                in_game_picture = Image("How-to-Grow-Broccoli.jpg", 50, 250, 980, 420)
+            if page_num == 5:
+                in_game_effect = Phrase(0, 0, 0, "Arial", "Famine", 50, 50, 50)
+                in_game_des = Phrase(0, 0, 0, "Arial", "An extreme scarcity of food causing ten households to request for food at once.", 50, 150, 30)
+                in_game_picture = Image("south-sudan.jpg", 50, 250, 980, 420)
+            if page_num == 6:
+                in_game_effect = Phrase(0, 0, 0, "Arial", "Economic Depression", 50, 50, 50)
+                in_game_des = Phrase(0, 0, 0, "Arial", "A downturn in economic activity that causes prices to greatly increases.", 50, 150, 30)
+                in_game_picture = Image("Coronavirus-economic-recession.jpg", 50, 250, 980, 420)
+            if page_num == 7:
+                in_game_effect = Phrase(0, 0, 0, "Arial", "Crop Failure", 50, 50, 50)
+                in_game_des = Phrase(0, 0, 0, "Arial", "Crop destruction from weather, disease and insects causing food income to stop for", 50, 120, 30)
+                in_game_des2 = Phrase(0, 0, 0, "Arial", "10 seconds.", 50, 180, 30)
+                in_game_picture = Image("crop_failure.jpg", 50, 250, 980, 420)
+                in_game_des2.draw_text()
+            if page_num == 8:
+                in_game_effect = Phrase(0, 0, 0, "Arial", "Drought", 50, 50, 50)
+                in_game_des = Phrase(0, 0, 0, "Arial", "A period of time where a region experiences below-normal precipitation causing food", 50, 120, 30)
+                in_game_des2 = Phrase(0, 0, 0, "Arial", "production to decrease.", 50, 180, 30)
+                in_game_des2.draw_text()
+                in_game_picture = Image("drought.jpg", 50, 250, 980, 420)
 
-        background_image.create_image()
+
+
         X_Button.create_image()
 
         in_game_effect.draw_text()
 
-        power_up_cost.draw_text()
         in_game_des.draw_text()
         in_game_picture.create_image()
 
         display.update()
-
-    print("out")
-    return
-
 
 # ----------------------------------------------------------------------------------------------------------
 
@@ -422,6 +448,17 @@ while main_game == True:
                 information_page(2)
             if info_icon_button_list[3].button_press(e) == True:
                 information_page(3)
+            if situation_button.button_press(e) == True and situation == "Normal":
+                information_page(4)
+            if situation_button.button_press(e) == True and situation == "Famine":
+                information_page(5)
+            if situation_button.button_press(e) == True and situation == "Economic Depression":
+                information_page(6)
+            if situation_button.button_press(e) == True and situation == "Crop Failure":
+                information_page(7)
+            if situation_button.button_press(e) == True and situation == "Drought":
+                information_page(8)
+
 
     if plus_one_time + 100 >= time.get_ticks():
         plus_one_text.draw_text()
@@ -489,7 +526,7 @@ while main_game == True:
                 random_num_list.append(random_num)
                 random_buttom_list.append(Button(random_num[0], random_num[1], 40, 40))
                 random_picture_list.append(Image("flat_location_logo.png", random_num[0], random_num[1], 40, 40))
-                cost_list.append( int(((time.get_ticks() - start_time) / 1000 + 1) / random.randint(5, 10) + random.randint(1, 5)) / (1 + (0.1 * num_power_ups[0])))
+                cost_list.append(int(((time.get_ticks() - start_time) / 1000 + 1) / random.randint(5, 10) + random.randint(1, 5)) / (1 + (0.1 * num_power_ups[0])))
                 urgency_list.append([time.get_ticks() / 1000, "None"])
 
     if temp_situation >= time.get_ticks():

@@ -44,7 +44,9 @@ Step four: Install the nesscicary dependencies
 
 Step five: set environment variables
 >set FLASK_APP=purple
+
 -If you would like to see error messages when things go wrong, you can run
+
 >set FLASK_ENV=development
 
 Step six: run

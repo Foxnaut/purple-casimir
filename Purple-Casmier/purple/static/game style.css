@@ -13,6 +13,10 @@ body{
 #notice2{
 	color:red;
 }
+.rules{
+	width:50%;
+	margin:auto;
+}
 .BUTTONPLAY{
 	background-color:#22ffff;
 	border:none;

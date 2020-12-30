@@ -65,21 +65,21 @@ def information_page(page_num):
 
         if page_num == 0:
             in_game_des = Phrase(0, 0, 0, "Arial", "Decreases the amount of food needed to feed people by 10%", 50, 200, 30)
-            in_game_picture = Image("food-waste.jpg",50,250,980,420)
+            in_game_picture = Image("C:/Users/joshu/Downloads/Pygame Food Game/food-waste.jpg",50,250,980,420)
         if page_num == 1:
             in_game_des = Phrase(0, 0, 0, "Arial", "Increases the income multiplier by 0.5", 50, 200, 30)
             in_game_picture = Image("C:/Users/joshu/Downloads/Pygame Food Game/Irragation.jpg", 50, 250, 980, 420)
         if page_num == 2:
             in_game_des = Phrase(0, 0, 0, "Arial", "Increases food income from clicks by 1", 50, 200, 30)
-            in_game_picture = Image("soil.jpg", 50, 250, 980, 420)
+            in_game_picture = Image("C:/Users/joshu/Downloads/Pygame Food Game/soil.jpg", 50, 250, 980, 420)
         if page_num == 3:
             in_game_des = Phrase(0, 0, 0, "Arial", "Passive income giving food every second", 50, 200, 30)
-            in_game_picture = Image("Trackter.jpg", 50, 250, 980, 420)
+            in_game_picture = Image("C:/Users/joshu/Downloads/Pygame Food Game/Trackter.jpg", 50, 250, 980, 420)
 
         in_game_effect = Phrase(0,0,0,"Arial",list_power_ups_names[page_num] + "'s Power Up Bonus",50,50,50)
 
         if num_power_ups[page_num] <= 4:
-            power_up_cost = Phrase(0,0,0,"Arial","Power Up Cost: " + str(num_power_ups[page_num] * 100 + 100),50,150,30)
+            power_up_cost = Phrase(0,0,0,"Arial","Power Up Cost: " + str(num_power_ups[page_num] * 300 + 300),50,150,30)
         else:
             power_up_cost = Phrase(0, 0, 0, "Arial", "Power Up Cost: Maximum Amount Acquired", 50, 150, 30)
 
@@ -105,16 +105,16 @@ def information_page(page_num):
 
 window_width = 1080
 window_height = 720
-display.set_caption("Broccoli distro")
+display.set_caption("Broccoli Distro")
 window = display.set_mode((window_width,window_height))
 
-world_image = Image("world_map.jpg",20,20,600,400)
-food_image = Image("broccoli.png",620,10,400,400)
-background_image = Image("background_image.png",0,0,1080,720)
+world_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/world_map.jpg",20,20,600,400)
+food_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/broccoli.png",620,10,400,400)
+background_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/background_image.png",0,0,1080,720)
 
 # X Button
 
-X_Button = Image("X_Button.png",980,50,50,50)
+X_Button = Image("C:/Users/joshu/Downloads/Pygame Food Game/X_Button.png",980,50,50,50)
 X_Button_button = Button(980,50,50,50)
 
 list_power_ups_names = [
@@ -138,7 +138,7 @@ num_power_ups = [0,0,0,0]
 
 plus_button_image_list = []
 for i in range(4):
-    plus_button_image_list.append(Image("plus_image.png",50,505 + (i * 50),30,30))
+    plus_button_image_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/plus_image.png",50,505 + (i * 50),30,30))
 
 # Power Up Button
 
@@ -150,17 +150,20 @@ rand_time = 0
 
 # Green Power Up Box
 
+power_up_icon = Image("C:/Users/joshu/Downloads/Pygame Food Game/power_up_icon.png",50,455,30,30)
+
 green_box = [[],[],[],[]]
 black_box = [[],[],[],[]]
 for i in range(4):
     for j in range(5):
         green_box[i].append(Image("C:/Users/joshu/Downloads/Pygame Food Game/Green_Square.jpg",350 + (j * 40),505 + (i * 50),30,30))
         black_box[i].append(Image("C:/Users/joshu/Downloads/Pygame Food Game/box_outline.png",350 + (j * 40),505 + (i * 50),30,30))
+
 # Imformation Icon
 
 info_icon_list = []
 for i in range(4):
-    info_icon_list.append(Image("Information_icon.png",550,502.5 + (i * 50),30,30))
+    info_icon_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/Information_icon.png",550,502.5 + (i * 50),30,30))
 
 info_icon_button_list = []
 for i in range(4):
@@ -178,6 +181,28 @@ food_counter_text = Phrase(0,0,0,"Arial","Food Counter:",650,450,50)
 
 plus_one_text = Phrase(0,0,0,"Arial","+" + str(1 + (1 * num_power_ups[2])),950,100,100)
 plus_one_time = -1
+
+# Situation
+
+situation = "Normal"
+situation_string = "Situation: " + situation
+situation_list = [
+    "Normal",
+    "Famine",
+    "Economic Depression",
+    "Crop Failure",
+    "Drought"
+]
+situation_timer = 60
+
+situation_phrase = Phrase(0,0,0,"Arial",situation_string,45,0,30)
+light_blue_square6 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",0,0,40 + (len(situation_string) * 12),40)
+situation_info_icon = (Image("C:/Users/joshu/Downloads/Pygame Food Game/Information_icon.png",5,5,30,30))
+situation_button = Button(5,5,30,30)
+
+temp_situation = time.get_ticks()
+
+start_situation = 1000000
 
 # Hearts
 
@@ -212,12 +237,16 @@ final_score = Phrase(0, 0, 0, "Arial","Score: " + final_score1, 350, 400, 100)
 light_blue_square3 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",300,200,480,110)
 light_blue_square4 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",350,400,280 + (40 * len(str(final_score1))),110)
 
+# Start Stuff
+
+press_spase = Phrase(0, 0, 0,"Arial","Press Space To Play!", 150, 270, 100)
+light_blue_square5 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",150,270,780,120)
+
 #Brocoli 2
 
 broccoli_image = Image("C:/Users/joshu/Downloads/Pygame Food Game/broccoli_2.jpg",0,0,1080,720)
 
 # List Icon Storage
-
 
 time1 = 10
 random_num_list = []
@@ -247,6 +276,8 @@ while main_game == True:
                 main_game = False
 
     broccoli_image.create_image()
+    light_blue_square5.create_image()
+    press_spase.draw_text()
 
     display.update()
 
@@ -260,6 +291,8 @@ else:
     main_game = "kill switch"
 
 
+start_time = time.get_ticks()
+
 while main_game == True:
 
     # Everything that need to be updated every game loop
@@ -270,10 +303,11 @@ while main_game == True:
     food_image.create_image()
     light_blue_square1.create_image()
     light_blue_square2.create_image()
+    power_up_icon.create_image()
 
     score_text.draw_text()
-    final_score1 = str(int(time.get_ticks() / 1000))
-    score_text = Phrase(0, 0, 0, "Arial", "Score: " + str(int(time.get_ticks() / 1000)), 650, 640, 50)
+    final_score1 = str(int((time.get_ticks() - start_time) / 1000))
+    score_text = Phrase(0, 0, 0, "Arial", "Score: " + final_score1, 650, 640, 50)
 
     food_counter_text = Phrase(0, 0, 0, "Arial", "Food Amount: " + str(int(food_counter)), 650, 430, 50)
     food_counter_text.draw_text()
@@ -284,14 +318,19 @@ while main_game == True:
 
     # Making a new icon every ten seconds
 
-    if time.get_ticks() / 1000 >= time1:
-        time1 += 10
-        random_num = [random.randint(20, 580), random.randint(20, 380)]
+    if (time.get_ticks() - start_time) / 1000 >= time1:
+        time1 += random.randint(10,15)
+        random_num = [random.randint(50, 580), random.randint(50, 380)]
         random_num_list.append(random_num)
         random_buttom_list.append(Button(random_num[0], random_num[1], 40, 40))
         random_picture_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/flat_location_logo.png", random_num[0], random_num[1], 40, 40))
-        cost_list.append(int((total_food_counter + 1) / random.randint(5, 10) + random.randint(1, 5)) / (1 + (0.1 * num_power_ups[0])))
-        urgency_list.append([time.get_ticks() / 1000,"None"])
+        urgency_list.append([time.get_ticks() / 1000, "None"])
+
+        if situation == "Economic Depression":
+            cost_list.append(int((((time.get_ticks() - start_time) / 1000 + 1) / random.randint(3, 5) + random.randint(1, 5)) / (1 + (0.1 * num_power_ups[0])) * 4))
+        else:
+            cost_list.append(int(((time.get_ticks() - start_time) / 1000 + 1) / random.randint(3, 5) + random.randint(1, 5)) / (1 + (0.1 * num_power_ups[0])))
+
 
     for i in range(len(cost_list)):
         cost_list[i] = int(cost_list[i])
@@ -360,14 +399,19 @@ while main_game == True:
 
             # Main Clicker
 
-            if clicker_button.button_press(e) == True:
-                food_counter += (1 + (1 * num_power_ups[2])) * income_multiplier
-                total_food_counter += (1 + (1 * num_power_ups[2])) * income_multiplier
+            if clicker_button.button_press(e) == True and situation != "Crop Failure":
+                if situation == "Drought":
+                    food_counter += ((1 + (1 * num_power_ups[2])) * income_multiplier) / 4
+                    total_food_counter += ((1 + (1 * num_power_ups[2])) * income_multiplier) / 4
+                else:
+                    food_counter += (1 + (1 * num_power_ups[2])) * income_multiplier
+                    total_food_counter += (1 + (1 * num_power_ups[2])) * income_multiplier
+
                 plus_one_time = time.get_ticks()
 
             for i in range(len(button_image_list)):
-                if button_image_list[i].button_press(e) == True and num_power_ups[i] <= 4 and food_counter >= (num_power_ups[i] + 1) * 100:
-                    food_counter -= (num_power_ups[i] + 1) * 100
+                if button_image_list[i].button_press(e) == True and num_power_ups[i] <= 4 and food_counter >= (num_power_ups[i] + 1) * 300:
+                    food_counter -= (num_power_ups[i] + 1) * 300
                     num_power_ups[i] += 1
 
             if info_icon_button_list[0].button_press(e) == True:
@@ -427,10 +471,57 @@ while main_game == True:
     if number_lives <= 0:
         main_game = "dead"
 
+    # Situation Stuff
+
+
+    if situation_timer <= (time.get_ticks() - start_time) / 1000:
+        situation_timer += 90
+        situation = situation_list[random.randint(1,4)]
+        temp_situation = time.get_ticks() + 2000
+        if situation == "Crop Failure":
+            start_situation = time.get_ticks() + 10000
+        else:
+            start_situation = time.get_ticks() + 30000
+
+        if situation == "Famine":
+            for i in range(10):
+                random_num = [random.randint(50, 580), random.randint(50, 380)]
+                random_num_list.append(random_num)
+                random_buttom_list.append(Button(random_num[0], random_num[1], 40, 40))
+                random_picture_list.append(Image("C:/Users/joshu/Downloads/Pygame Food Game/flat_location_logo.png", random_num[0], random_num[1], 40, 40))
+                cost_list.append( int(((time.get_ticks() - start_time) / 1000 + 1) / random.randint(5, 10) + random.randint(1, 5)) / (1 + (0.1 * num_power_ups[0])))
+                urgency_list.append([time.get_ticks() / 1000, "None"])
+
+    if temp_situation >= time.get_ticks():
+        big_red_letters = Phrase(255,0,0,"Arial",situation + "!",50,300,100)
+        big_red_letters.draw_text()
+
+    if start_situation <= time.get_ticks():
+        print("Normal")
+        situation = situation_list[0]
+        start_situation = time.get_ticks() + 10000000
+
+
+    situation_string = "Situation: " + situation
+    situation_phrase = Phrase(0, 0, 0, "Arial", situation_string, 45, 0, 30)
+    light_blue_square6 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png", 0, 0, 40 + (len(situation_string) * 12), 40)
+
+    light_blue_square6.create_image()
+    situation_phrase.draw_text()
+    situation_info_icon.create_image()
+
+
+
+
+
     display.update()
+
 # ----------------------------------------------------------------------------------------------------------
 
 # Ending Screen
+
+final_score = Phrase(0, 0, 0, "Arial","Score: " + final_score1, 350, 400, 100)
+light_blue_square4 = Image("C:/Users/joshu/Downloads/Pygame Food Game/lightblue.png",350,400,280 + (40 * len(str(final_score1))),110)
 
 if main_game == "dead":
     main_game = True
@@ -451,3 +542,7 @@ if main_game == "dead":
         final_score.draw_text()
 
         display.update()
+
+
+
+
